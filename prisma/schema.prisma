@@ -14,12 +14,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id       String   @id @default(cuid())
+  email    String   @unique
+  name     String?
+  password String
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+
+  tickets Ticket[]
+}
+
 model Ticket {
   id          Int      @id @default(autoincrement())
   subject     String
   description String
   priority    String
-  status      String
+  status      String   @default("Open")
   createAt    DateTime @default(now())
-  updateAt    DateTime @default(now())
+  updateAt    DateTime @updatedAt
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
 }
