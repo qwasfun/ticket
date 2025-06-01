@@ -6,6 +6,8 @@ import { logEvent } from '../utils/semtry'
 const secret = new TextEncoder().encode(process.env.AUTH_SECRET)
 const cookieName = 'auth-token'
 
+/* eslint-disable  @typescript-eslint/no-explicit-any
+*/
 // Encrypt and sign token
 export async function signAuthToken(payload: any) {
   try {
