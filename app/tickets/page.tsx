@@ -1,5 +1,4 @@
 import { getTickets } from '@/actions/ticket.actions'
-import { logEvent } from '../../utils/semtry'
 import { getPriorityClass } from '@/utils/ui'
 
 import Link from 'next/link'
@@ -18,9 +17,11 @@ const TicketsPage = async () => {
           {tickets.map(ticket => (
             <div
               key={ticket.id}
-              className="flex justify-between items-center bg-white rounded-lg shadow border border-gray-200 p-6"
+              className={`flex justify-between items-center bg-white rounded-lg
+              shadow border border-gray-200 p-6 ${
+                ticket.status === 'Closed' ? 'opacity-50' : ''
+              }`}
             >
-              {/* <div></div> */}
               <div>
                 <h2 className="text-xl font-semibold text-blue-600">
                   {ticket.subject}

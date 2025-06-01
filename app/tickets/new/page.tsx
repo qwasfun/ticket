@@ -1,10 +1,16 @@
 'use client'
 import { useActionState, useEffect } from 'react'
 import { createTicket } from '@/actions/ticket.actions'
-import { useRouter } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
 import { toast } from 'sonner'
+import { getCurrentUser } from '@/lib/current-user'
 
 const NewTicketPage = () => {
+  const user = getCurrentUser()
+  if (!user) {
+    redirect('/login')
+  }
+
   const [state, formAction] = useActionState(createTicket, {
     success: false,
     message: ''
