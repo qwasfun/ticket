@@ -3,7 +3,7 @@
 import { useActionState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { logoutUser } from '@/actions/auth.actions'
-import { toast, ToastClassnames } from 'sonner'
+import { toast } from 'sonner'
 
 export const LogoutButton = () => {
   const router = useRouter()

@@ -1,4 +1,3 @@
-import next from 'next'
 import { getTicketById } from '@/actions/ticket.actions'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
